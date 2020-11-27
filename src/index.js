@@ -40,7 +40,7 @@ submit.addEventListener('click', async (e) => {
   const result = await getData(url).catch(error => {
     header.textContent = `${error}... That happened and we are trying to fix it at the moment. We are so sorry`;
   });
-  // console.log(result);
+
   const {
     main, name, sys, weather,
   } = result;
