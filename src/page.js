@@ -1,25 +1,34 @@
+const { body } = document;
 const searchCon = document.createElement('div');
 searchCon.classList.add('search-container');
+const mainCon = document.createElement('div');
+mainCon.classList.add('main-con');
+const header = document.createElement('h1');
+header.classList.add('header');
+const figure = document.createElement('figure');
+figure.classList.add('icon');
+const ul = document.createElement('ul');
+ul.classList.add('details');
 const form = document.createElement('form');
 const label = document.createElement('label');
+label.textContent = 'Search';
 const input = document.createElement('input');
-
-const useRes = (el, pointer, info) => {
-  const [key] = info;
-  const keys = key[pointer];
-  Object.keys(keys).forEach(kee => {
-    el.setAttribute(kee, keys[kee]);
-  });
-};
-
-const setAttributes = ((el, pointer, arr) => {
-  const res = arr.filter(obj => obj.hasOwnProperty(pointer));
-  useRes(el, pointer, res);
-  return el;
-});
-
-
+const btnInput = document.createElement('input');
+const list = [
+  {
+    fg: ['figcaption', 'img'],
+  },
+  {
+    li: ['time', 'temp', 'desc'],
+  },
+];
 const ele = [
+  {
+    form: {
+      action: '/',
+      method: 'get',
+    },
+  },
   {
     label: {
       for: 'search',
@@ -37,12 +46,60 @@ const ele = [
     btn: {
       type: 'submit',
       id: 'search-button',
-      value: 'Search',
+      value: 'Submit',
     },
   },
 ];
-setAttributes(label, 'label', ele);
-setAttributes(input, 'search', ele);
-setAttributes(input, 'btn', ele);
 
-// export default queries;
+const page = (() => {
+  const createList = ((arr, pointer, par) => {
+    const fil = arr.filter(obj => obj.hasOwnProperty(pointer));
+    const cur = fil[0];
+    let elem;
+    cur[pointer].forEach(el => {
+      if (pointer === 'fg') elem = document.createElement(el);
+      else elem = document.createElement(pointer);
+      elem.setAttribute('class', el);
+      par.appendChild(elem);
+    });
+    return par;
+  });
+
+  const useRes = (el, pointer, info) => {
+    const [key] = info;
+    const keys = key[pointer];
+    Object.keys(keys).forEach(kee => {
+      el.setAttribute(kee, keys[kee]);
+    });
+  };
+
+  const setAttributes = ((el, pointer, arr) => {
+    const res = arr.filter(obj => obj.hasOwnProperty(pointer));
+    useRes(el, pointer, res);
+    return el;
+  });
+
+  const appendElements = () => {
+    const figs = createList(list, 'fg', figure);
+    const uls = createList(list, 'li', ul);
+    const fom = setAttributes(form, 'form', ele);
+    const lab = setAttributes(label, 'label', ele);
+    const sach = setAttributes(input, 'search', ele);
+    const butn = setAttributes(btnInput, 'btn', ele);
+    fom.append(lab, sach, butn);
+    searchCon.appendChild(fom);
+    mainCon.append(header, figs, uls, searchCon);
+    body.appendChild(mainCon);
+    return body;
+  };
+
+  const fillEl = (el, data) => {
+    el.textContent = data;
+  };
+
+  return {
+    appendElements,
+  };
+})();
+
+export default page;
