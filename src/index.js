@@ -1,6 +1,7 @@
 import './assets/styles/main.css';
 import page from './page';
 import "regenerator-runtime/runtime.js"; //eslint-disable-line
+import lookup from 'country-code-lookup';
 
 page.appendElements();
 
@@ -16,6 +17,7 @@ const form = document.querySelector('form');
 const search = document.querySelector('#search');
 const submit = document.querySelector('#search-button');
 let weatherTemp;
+let code;
 
 const getData = async (link) => {
   const response = await fetch(link, { mode: 'cors' });
