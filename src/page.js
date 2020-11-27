@@ -43,6 +43,7 @@ const ele = [
       type: 'search',
       id: 'search',
       'aria-labelledby': 'search-button',
+      placeholder: 'Search for a city',
     },
   },
   {

@@ -1,5 +1,15 @@
 body {
-  background: #00c1ff ;
+  background: #0A1F44 ;
+}
+
+.main-con {
+  margin: 20px auto;
+  width: 70%;
+  color: white;
+}
+
+.header {
+  cursor: pointer;
 }
 
 .details {
@@ -8,6 +18,12 @@ body {
   justify-content: space-evenly;
 }
 
-.temp {
-  cursor: pointer;
+form {
+  color: white;
+  font-size: 2em;
+  display: flex;
+}
+
+#search {
+  width: 70%;
 }
