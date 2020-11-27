@@ -1,0 +1,13 @@
+body {
+  background: #00c1ff ;
+}
+
+.details {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.temp {
+  cursor: pointer;
+}

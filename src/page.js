@@ -5,6 +5,8 @@ const mainCon = document.createElement('div');
 mainCon.classList.add('main-con');
 const header = document.createElement('h1');
 header.classList.add('header');
+const sup = document.createElement('sup');
+header.appendChild(sup);
 const figure = document.createElement('figure');
 figure.classList.add('icon');
 const ul = document.createElement('ul');
@@ -16,7 +18,7 @@ const input = document.createElement('input');
 const btnInput = document.createElement('input');
 const list = [
   {
-    fg: ['figcaption', 'img'],
+    fg: ['img', 'figcaption'],
   },
   {
     li: ['time', 'temp', 'desc'],
