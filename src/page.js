@@ -5,7 +5,10 @@ const mainCon = document.createElement('div');
 mainCon.classList.add('main-con');
 const headerCon = document.createElement('div');
 headerCon.classList.add('header-con');
-const header = document.createElement('h1');
+const topHeader = document.createElement('h1');
+topHeader.classList.add('head');
+topHeader.textContent = 'Weather Forecast';
+const header = document.createElement('h2');
 header.classList.add('header');
 const para = document.createElement('p');
 const figure = document.createElement('figure');
@@ -57,7 +60,7 @@ const ele = [
 
 const page = (() => {
   const createList = ((arr, pointer, par) => {
-    const fil = arr.filter(obj => obj.hasOwnProperty(pointer));
+    const fil = arr.filter(obj => obj.hasOwnProperty(pointer)); //eslint-disable-line
     const cur = fil[0];
     let elem;
     cur[pointer].forEach(el => {
@@ -78,7 +81,7 @@ const page = (() => {
   };
 
   const setAttributes = ((el, pointer, arr) => {
-    const res = arr.filter(obj => obj.hasOwnProperty(pointer));
+    const res = arr.filter(obj => obj.hasOwnProperty(pointer)); //eslint-disable-line
     useRes(el, pointer, res);
     return el;
   });
@@ -90,16 +93,12 @@ const page = (() => {
     const lab = setAttributes(label, 'label', ele);
     const sach = setAttributes(input, 'search', ele);
     const butn = setAttributes(btnInput, 'btn', ele);
-    headerCon.append(header, para);
+    headerCon.append(topHeader, header, para);
     fom.append(lab, sach, butn);
     searchCon.appendChild(fom);
     mainCon.append(headerCon, figs, uls, searchCon);
     body.appendChild(mainCon);
     return body;
-  };
-
-  const fillEl = (el, data) => {
-    el.textContent = data;
   };
 
   return {

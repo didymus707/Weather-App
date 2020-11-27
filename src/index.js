@@ -9,8 +9,6 @@ const header = document.querySelector('.header');
 const para = document.querySelector('p');
 const img = document.querySelector('.img');
 const figcaption = document.querySelector('.figcaption');
-const details = document.querySelector('.details');
-const time = document.querySelector('.time');
 const desc = document.querySelector('.desc');
 const form = document.querySelector('form');
 const search = document.querySelector('#search');
@@ -48,7 +46,6 @@ submit.addEventListener('click', async (e) => {
   } = result;
   form.reset();
   code = country(sys.country);
-  console.log(code);
   const content = weather[0];
   header.textContent = `${main.temp}°C`;
   para.innerHTML = `${name}, ${code.country}`;
