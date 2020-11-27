@@ -22,7 +22,7 @@ const list = [
     fg: ['img', 'figcaption'],
   },
   {
-    li: ['time', 'temp', 'desc'],
+    li: ['time', 'desc'],
   },
 ];
 const ele = [

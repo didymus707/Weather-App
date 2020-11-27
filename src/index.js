@@ -1,17 +1,16 @@
 import './assets/styles/main.css';
+import lookup from 'country-code-lookup';
 import page from './page';
 import "regenerator-runtime/runtime.js"; //eslint-disable-line
-import lookup from 'country-code-lookup';
 
 page.appendElements();
 
 const header = document.querySelector('.header');
-const sup = document.querySelector('sup');
+const para = document.querySelector('p');
 const img = document.querySelector('.img');
 const figcaption = document.querySelector('.figcaption');
 const details = document.querySelector('.details');
 const time = document.querySelector('.time');
-const temp = document.querySelector('.temp');
 const desc = document.querySelector('.desc');
 const form = document.querySelector('form');
 const search = document.querySelector('#search');
@@ -25,13 +24,15 @@ const getData = async (link) => {
   return data;
 };
 
-const conversion = (tem, unit) => {
+const conversion = (tem) => {
   const celcius = tem;
   const faren = (celcius * 1.8) + 32;
-  if (temp.textContent.includes('°C')) temp.textContent = `${faren}°F`;
-  else temp.textContent = `${tem}°C`;
-  return temp;
+  if (header.textContent.includes('°C')) header.textContent = `${faren}°F`;
+  else header.textContent = `${tem}°C`;
+  return header;
 };
+
+const country = cty => lookup.byIso(cty);
 
 submit.addEventListener('click', async (e) => {
   e.preventDefault();
@@ -41,21 +42,23 @@ submit.addEventListener('click', async (e) => {
   const result = await getData(url).catch(error => {
     header.textContent = `${error}... That happened and we are trying to fix it at the moment. We are so sorry`;
   });
-  console.log(result);
+  // console.log(result);
   const {
     main, name, sys, weather,
   } = result;
   form.reset();
+  code = country(sys.country);
+  console.log(code);
   const content = weather[0];
-  header.textContent = name;
+  header.textContent = `${main.temp}°C`;
+  para.innerHTML = `${name}, ${code.country}`;
   figcaption.textContent = content.main;
-  temp.textContent = `${main.temp}°C`;
   weatherTemp = main.temp;
   desc.textContent = content.description;
   img.src = `https://openweathermap.org/img/wn/${content.icon}@2x.png`;
 });
 
-temp.addEventListener('click', async () => {
+header.addEventListener('click', async () => {
   const num = Number(weatherTemp);
   conversion(num);
 });
