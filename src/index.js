@@ -1,5 +1,6 @@
 import './assets/styles/main.css';
 import lookup from 'country-code-lookup';
+import moment from 'moment';
 import page from './page';
 import "regenerator-runtime/runtime.js"; //eslint-disable-line
 
@@ -10,12 +11,14 @@ const btn = document.querySelector('button');
 const para = document.querySelector('p');
 const img = document.querySelector('.img');
 const figcaption = document.querySelector('.figcaption');
+const time = document.querySelector('.time');
 const desc = document.querySelector('.desc');
 const form = document.querySelector('form');
 const search = document.querySelector('#search');
 const submit = document.querySelector('#search-button');
 let weatherTemp;
 let code;
+let date;
 
 const getData = async (link) => {
   const response = await fetch(link, { mode: 'cors' });
@@ -24,14 +27,20 @@ const getData = async (link) => {
 };
 
 const conversion = (tem) => {
-  const celcius = tem;
-  const faren = (celcius * 1.8) + 32;
+  const faren = (tem * 1.8) + 32;
   if (header.textContent.includes('°C')) header.textContent = `${faren}°F`;
   else header.textContent = `${tem}°C`;
   return header;
 };
 
 const country = cty => lookup.byIso(cty);
+
+const mins = time => {
+  const timns = time / 60;
+  // const curr = moment().utcOffset(timns).format('h:mm A');
+  const curr = moment().utcOffset(timns).format('MMMM DD, YYYY-h:mm A');
+  return curr.split('-');
+};
 
 submit.addEventListener('click', async (e) => {
   e.preventDefault();
@@ -43,10 +52,12 @@ submit.addEventListener('click', async (e) => {
   });
 
   const {
-    main, dt, name, sys, weather,
+    main, name, sys, timezone, weather,
   } = result;
-  console.log(new Date(dt*1000));
   form.reset();
+  const dateTime = mins(timezone);
+  date = dateTime.shift();
+  time.textContent = dateTime.pop();
   code = country(sys.country);
   const content = weather[0];
   header.textContent = `${main.temp}°C`;
