@@ -6,6 +6,7 @@ import "regenerator-runtime/runtime.js"; //eslint-disable-line
 page.appendElements();
 
 const header = document.querySelector('.header');
+const btn = document.querySelector('button');
 const para = document.querySelector('p');
 const img = document.querySelector('.img');
 const figcaption = document.querySelector('.figcaption');
@@ -56,7 +57,7 @@ submit.addEventListener('click', async (e) => {
   img.src = `https://openweathermap.org/img/wn/${content.icon}@2x.png`;
 });
 
-header.addEventListener('click', async () => {
+btn.addEventListener('click', async () => {
   const num = Number(weatherTemp);
   conversion(num);
 });

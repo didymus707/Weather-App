@@ -21,10 +21,14 @@ body {
 
 form {
   color: white;
-  font-size: 2em;
+  font-size: 2.5em;
   display: flex;
 }
 
 #search {
   width: 70%;
+  border: none;
+  border-bottom: 2px solid white;
+  background: none;
+  outline: none;
 }
