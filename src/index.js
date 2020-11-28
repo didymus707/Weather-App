@@ -38,12 +38,13 @@ submit.addEventListener('click', async (e) => {
   const apiKey = '1167e47fcac43a43c26e928ef53a787b';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${apiKey}`;
   const result = await getData(url).catch(error => {
-    header.textContent = `${error}... That happened and we are trying to fix it at the moment. We are so sorry`;
+    header.innerHTML = `${error}... <br>That happened and we are trying to fix it at the moment. We are so sorry`;
   });
 
   const {
-    main, name, sys, weather,
+    main, dt, name, sys, weather,
   } = result;
+  console.log(new Date(dt*1000));
   form.reset();
   code = country(sys.country);
   const content = weather[0];

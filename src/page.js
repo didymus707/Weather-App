@@ -8,16 +8,17 @@ headerCon.classList.add('header-con');
 const topHeader = document.createElement('h1');
 topHeader.classList.add('head');
 topHeader.textContent = 'Weather Forecast';
+const main = document.createElement('main');
+main.classList.add('main');
 const header = document.createElement('h2');
 header.classList.add('header');
+const btn = document.createElement('button');
 const para = document.createElement('p');
 const figure = document.createElement('figure');
 figure.classList.add('icon');
 const ul = document.createElement('ul');
 ul.classList.add('details');
 const form = document.createElement('form');
-const label = document.createElement('label');
-label.textContent = 'Search';
 const input = document.createElement('input');
 const btnInput = document.createElement('input');
 const list = [
@@ -33,12 +34,6 @@ const ele = [
     form: {
       action: '/',
       method: 'get',
-    },
-  },
-  {
-    label: {
-      for: 'search',
-      'aria-label': 'Search',
     },
   },
   {
@@ -93,7 +88,8 @@ const page = (() => {
     const lab = setAttributes(label, 'label', ele);
     const sach = setAttributes(input, 'search', ele);
     const butn = setAttributes(btnInput, 'btn', ele);
-    headerCon.append(topHeader, header, para);
+    main.append(header, btn, para);
+    headerCon.append(topHeader, main);
     fom.append(lab, sach, butn);
     searchCon.appendChild(fom);
     mainCon.append(headerCon, figs, uls, searchCon);
