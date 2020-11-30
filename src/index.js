@@ -37,7 +37,6 @@ const country = cty => lookup.byIso(cty);
 
 const mins = time => {
   const timns = time / 60;
-  // const curr = moment().utcOffset(timns).format('h:mm A');
   const curr = moment().utcOffset(timns).format('MMMM DD, YYYY-h:mm A');
   return curr.split('-');
 };

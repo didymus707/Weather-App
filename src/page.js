@@ -97,8 +97,13 @@ const page = (() => {
     return body;
   };
 
+  const setContent = ((el, val) => {
+    el.textContent = val;
+  });
+
   return {
     appendElements,
+    setContent,
   };
 })();
 
