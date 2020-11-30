@@ -7,10 +7,7 @@ body {
   width: 70%;
   color: white;
   text-align: center;
-}
-
-.header {
-  cursor: pointer;
+  font-size: 20px;
 }
 
 .details {
@@ -25,6 +22,7 @@ form {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 10px;
 }
 
 #search {
@@ -33,6 +31,23 @@ form {
   border-bottom: 2px solid white;
   background: none;
   outline: none;
+  margin-right: 10px;
+  font-size: 30px;
+  padding: 8px;
+  color: white;
+}
+
+button,
+#search-button {
+  width: 140px;
+  background: #f32e41;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px;
 }
 
 .none {
