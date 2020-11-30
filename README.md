@@ -26,7 +26,8 @@ In order to start with the project:
   npm i
 ```
 in the terminal to install the dependencies.
-
+5. Run ```npm run dev``` to start compilation
+6. Open your browser to see the changes
 
 ## Authors
 

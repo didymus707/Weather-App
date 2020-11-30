@@ -5,6 +5,8 @@ const mainCon = document.createElement('div');
 mainCon.classList.add('main-con');
 const headerCon = document.createElement('div');
 headerCon.classList.add('header-con');
+const perror = document.createElement('p');
+perror.classList.add('error');
 const topHeader = document.createElement('h1');
 topHeader.classList.add('head');
 topHeader.textContent = 'Weather Forecast';
@@ -13,6 +15,7 @@ main.classList.add('main');
 const header = document.createElement('h2');
 header.classList.add('header');
 const btn = document.createElement('button');
+btn.classList.add('none');
 btn.textContent = 'Change Unit';
 const para = document.createElement('p');
 const figure = document.createElement('figure');
@@ -27,7 +30,7 @@ const list = [
     fg: ['img', 'figcaption'],
   },
   {
-    li: ['time', 'desc'],
+    li: ['date', 'time', 'desc'],
   },
 ];
 const ele = [
@@ -89,10 +92,11 @@ const page = (() => {
     const sach = setAttributes(input, 'search', ele);
     const butn = setAttributes(btnInput, 'btn', ele);
     main.append(header, btn, para);
-    headerCon.append(topHeader, main);
+    headerCon.append(topHeader, perror);
     fom.append(sach, butn);
     searchCon.appendChild(fom);
-    mainCon.append(headerCon, figs, uls, searchCon);
+    main.append(figs, uls);
+    mainCon.append(headerCon, main, searchCon);
     body.appendChild(mainCon);
     return body;
   };

@@ -34,3 +34,7 @@ form {
   background: none;
   outline: none;
 }
+
+.none {
+  display: none;
+}
