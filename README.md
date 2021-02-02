@@ -3,7 +3,7 @@
 This project requires the OpenWeatherMap Api in order to get the weather condition of a particular location. Es7 features Async/Await were used in making these Api calls along with the fetch Api. Users can search for the weather of a location by using the search box to sarch for a city name.
 
 ## Live Preview
-- See a live preview [here]()
+- See a live preview [here](https://didymus707.github.io/Weather-App/)
 
 ## Built With
 
